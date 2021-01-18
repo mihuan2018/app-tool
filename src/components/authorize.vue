@@ -14,24 +14,31 @@
 
         },
         mounted(options) {
+            let self = this;
             let query = this.$route.query;
-            if(!query.code && query.code != "") {
+            console.log(query)
+            if(query.code && query.code != "") {
                 let params = new FormData();
                 params.append("code", query.code);
+                params.append("state", query.state || "");
                 authCode(params).then(res => {
                     if(res.status != 200) {
-                        $.message.error(res.message);
+                        self.$message.error(res.message);
                     }
                     else {
-                        
+                        //设置数据到缓存
+                        self.$cookie.set("token", res.data.token);
+                        self.$cookie.set("shopName", res.data.user.dydShopName);
+                        self.$cookie.set("shopId", res.data.user.dydShopId);
+                        //跳转到首页
+                        self.$router.push({
+                            path: "/"
+                        })
                     }
                 })
             }
             else {
-                $.message.alert({
-                    message: "授权码为空",
-                    type: "error"
-                })
+                self.$message.error("授权码为空");
             }
         },
         data() {
@@ -51,7 +58,7 @@
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
     }
     .authorizer-wrapper .authorizer-loading {
         text-align: center;

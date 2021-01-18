@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 import { Button, Input,Form,FormItem, Breadcrumb, BreadcrumbItem,
     Pagination,Carousel, CarouselItem,Row,Col,Card,InputNumber, Dialog, Select, DatePicker,
-    Option, Tabs, tabPane, tableColumn, Table, Switch, Message, Progress, MessageBox} from 'element-ui'
+    Option, Tabs, tabPane, tableColumn, Table, Switch, Message, Progress, MessageBox, Image} from 'element-ui'
 Vue.use(Button)
 Vue.use(Input)
 Vue.use(Breadcrumb)
@@ -26,6 +26,7 @@ Vue.use(tableColumn)
 Vue.use(Table)
 Vue.use(Switch)
 Vue.use(Progress)
+Vue.use(Image)
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox
 
