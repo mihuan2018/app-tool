@@ -8,12 +8,31 @@
 </template>
 
 <script>
+    import {authCode} from "../api/index.js"
     export default {
         created(options) {
 
         },
         mounted(options) {
-            console.log(this.$route)
+            let query = this.$route.query;
+            if(!query.code && query.code != "") {
+                let params = new FormData();
+                params.append("code", query.code);
+                authCode(params).then(res => {
+                    if(res.status != 200) {
+                        $.message.error(res.message);
+                    }
+                    else {
+                        
+                    }
+                })
+            }
+            else {
+                $.message.alert({
+                    message: "授权码为空",
+                    type: "error"
+                })
+            }
         },
         data() {
             return {

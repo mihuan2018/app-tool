@@ -8,3 +8,10 @@ export const baseCode = (params) => {
     return http.fetchGet('/base/code', params)
 }
 
+export const authCode = (params) => {
+    return http.fetchPost("/base/authorize", params)
+}
+
+export const supplierLogin = (params) => {
+    return http.fetchPost("/supplier/login", params)
+}

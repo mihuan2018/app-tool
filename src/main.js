@@ -6,9 +6,11 @@ import './plugins/element.js'
 Vue.config.productionTip = false; //生成生产提示
 import Navbar from './components/common/navbar';
 import sidebar from './components/common/sidebar';
+import VueCookie from "vue-cookie";
 
 Vue.component("Navbar", Navbar);
 Vue.component("sidebar", sidebar);
+Vue.use(VueCookie)
 
 Vue.filter('dateFormat', function(originVal) {
     const dt = new Date(originVal)
